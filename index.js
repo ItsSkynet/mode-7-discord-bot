@@ -240,7 +240,7 @@ client.on("message", (message) => {
                 message.channel.send(`${latest.content}`);
             }
         }else{
-            if(limitador > 0){
+            if(limitador > 0 && contadorInterno > 0){
                 // Bot cooldown
                 message.channel.send(respuestasCooldown[respuestaPos]);
                 contadorInterno = 0;
