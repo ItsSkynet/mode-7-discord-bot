@@ -212,7 +212,8 @@ recordarM7CTR.start();
 // Obtener últimos dos mensajes, comparar y empezar el mame
 client.on("message", (message) => {
     const respuestasCooldown = [
-        "Pues no que tan jugones? Ya nadie me siguio el mame!"
+        "Pues no que tan jugones? Ya nadie me siguio el mame!",
+        "Ya nadie me siguio el mame :("
     ];
     
     const respuestaPos = Math.floor(Math.random() * respuestasCooldown.length);
@@ -221,7 +222,7 @@ client.on("message", (message) => {
         let previous = messages.array()[0];
         let latest = messages.array()[1];
 
-        if (latest.content == previous.content && (latest.author.id != previous.author.id || latest.author.bot == previous.author.bot)) {
+        if (latest.content == previous.content && (latest.author.username != previous.author.username || latest.author.bot == previous.author.bot)) {
             if(limitador > 0){
                 if(contadorInterno < limitador){
                     message.channel.send(`${latest.content}`);
@@ -237,6 +238,12 @@ client.on("message", (message) => {
                 }
             }else{
                 message.channel.send(`${latest.content}`);
+            }
+        }else{
+            if(limitador > 0){
+                // Bot cooldown
+                message.channel.send(respuestasCooldown[respuestaPos]);
+                contadorInterno = 0;
             }
         }
     });
