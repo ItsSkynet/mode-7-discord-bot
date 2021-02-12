@@ -227,7 +227,7 @@ client.on("message", (message) => {
                 if(contadorInterno < limitador){
                     message.channel.send(`${latest.content}`);
                     contadorInterno++;
-                    if(latest.author.id != previous.author.id){
+                    if(latest.author.username != previous.author.username){
                         // Alguien le siguio al mame, se reinicia Contador
                         contadorInterno = 0;
                     }
