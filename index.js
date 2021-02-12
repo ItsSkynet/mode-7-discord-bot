@@ -238,10 +238,6 @@ client.on("message", (message) => {
             }else{
                 message.channel.send(`${latest.content}`);
             }
-        }else{
-            //Se termino el mame
-            message.channel.send(respuestasCooldown[respuestaPos]);
-            contadorInterno = 0;
         }
     });
 });
